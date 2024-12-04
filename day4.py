@@ -2,10 +2,7 @@
 import re
 
 
-def part_1():
-    with open("d4.txt", 'r') as f:
-        lines = [line.strip() for line in f.readlines()]
-
+def part_1(lines):
     ans = 0
     pattern1 = r'XMAS'
     pattern2 = r'SAMX'
@@ -44,9 +41,7 @@ def part_1():
     print("part1:", ans)
 
 
-def part_2():
-    with open("test.txt", 'r') as f:
-        lines = [line.strip() for line in f]
+def part_2(lines):
 
     ans = 0
     n, m = len(lines), len(lines[0])
@@ -64,5 +59,8 @@ def part_2():
 
 
 if __name__ == "__main__":
-    part_1()
-    part_2()
+    with open("d4.txt", 'r') as f:
+        ll = [line.strip() for line in f]
+
+    part_1(ll)
+    part_2(ll)
