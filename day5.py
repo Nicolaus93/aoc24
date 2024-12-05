@@ -1,4 +1,3 @@
-
 from collections import defaultdict
 from itertools import combinations
 
@@ -11,14 +10,11 @@ def is_valid(nums, greater_than):
 
 
 def part_1(lines):
-
     ans = ans_2 = 0
-    smaller_than = defaultdict(list)
     greater_than = defaultdict(list)
     for line in lines:
         if "|" in line:
             order = line.split("|")
-            smaller_than[order[1]].append(order[0])
             greater_than[order[0]].append(order[1])
         elif "," in line:
             nums = line.split(",")
@@ -26,14 +22,11 @@ def part_1(lines):
             if is_valid(nums, greater_than):
                 ans += int(nums[len(nums) // 2])
             else:
-                it = 0
-                while not is_valid(nums, greater_than) and it < 100:
+                while not is_valid(nums, greater_than):
                     for i in range(len(nums)):
                         for j in range(i + 1, len(nums)):
                             if not nums[j] in greater_than[nums[i]]:
                                 nums[j], nums[i] = nums[i], nums[j]
-                                break
-                    it += 1
                 ans_2 += int(nums[len(nums) // 2])
 
     print("part1:", ans)
@@ -41,7 +34,7 @@ def part_1(lines):
 
 
 if __name__ == "__main__":
-    with open("d5.txt", 'r') as f:
+    with open("d5.txt", "r") as f:
         ll = [line.strip() for line in f]
 
     part_1(ll)
