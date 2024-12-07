@@ -2,13 +2,12 @@
 import sys
 from itertools import product
 from operator import add, mul
-
+from utils import progressbar
 
 
 def solve(lines, is_part_2=False):
     ans = 0
-    p2 = 0
-    for line in lines:
+    for line in progressbar(lines):
         n, nums = line.split(':')
         n = int(n)
         nums = [int(i) for i in nums.split()]
@@ -19,6 +18,8 @@ def solve(lines, is_part_2=False):
             result = nums[0]
             for i, op in enumerate(ops):
                 result = op(result, nums[i + 1])
+                if result > n:
+                    break
 
             if result == n:
                 ans += n
