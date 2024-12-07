@@ -1,3 +1,5 @@
+import sys
+from utils import measure_runtime, progressbar
 
 
 def simulate(current_pos, grid):
@@ -16,6 +18,7 @@ def simulate(current_pos, grid):
     raise ValueError
 
 
+@measure_runtime
 def solve(lines):
     for i, line in enumerate(lines):
         for j, cc in enumerate(line):
@@ -27,7 +30,7 @@ def solve(lines):
     print("part1:", ans)
 
     ans_2 = 0
-    for i in range(len(lines)):
+    for i in progressbar(range(len(lines))):
         for j in range(len(lines[0])):
             if lines[i][j] == '.':
                 lines[i][j] = '#'
@@ -40,7 +43,7 @@ def solve(lines):
 
 
 if __name__ == "__main__":
-    with open("d6.txt", "r") as f:
+    with open(sys.argv[1], "r") as f:
         ll = []
         for line in f:
             ll.append([c for c in line.strip()])
