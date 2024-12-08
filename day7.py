@@ -1,4 +1,4 @@
-
+import re
 import sys
 from itertools import product
 from operator import add, mul
@@ -7,11 +7,9 @@ from utils import progressbar
 
 def solve(lines, is_part_2=False):
     ans = 0
+    all_ops = [add, mul]
     for line in progressbar(lines):
-        n, nums = line.split(':')
-        n = int(n)
-        nums = [int(i) for i in nums.split()]
-        all_ops = [add, mul]
+        n, *nums = [int(i) for i in re.findall(r'\d+', line)]
         if is_part_2:
             all_ops.append(lambda x, y: int(str(x) + str(y)))
         for ops in product(all_ops, repeat=len(nums) - 1):
