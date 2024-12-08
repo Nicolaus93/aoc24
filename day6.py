@@ -45,7 +45,7 @@ def solve(lines):
 if __name__ == "__main__":
     with open(sys.argv[1], "r") as f:
         ll = []
-        for line in f:
-            ll.append([c for c in line.strip()])
+        for ln in f:
+            ll.append([c for c in ln.strip()])
 
     solve(ll)
