@@ -1,6 +1,25 @@
 import time
+from dataclasses import dataclass
 from functools import wraps
 import sys
+
+
+@dataclass(frozen=True)
+class P2d:
+    x: int
+    y: int
+
+    def __add__(self, other):
+        return P2d(self.x + other.x, self.y + other.y)
+
+    def __mul__(self, scalar: int):
+        return P2d(scalar * self.x, scalar * self.y)
+
+    def __rmul__(self, scalar: int):
+        return self * scalar  # Reuse the __mul__ method
+
+    def __sub__(self, other):
+        return (-1 * other) + self
 
 
 def measure_runtime(func):
@@ -40,3 +59,13 @@ def progressbar(it, size=60, out=sys.stdout):
         yield item
         show(i + 1)
     print("\n", flush=True, file=out)
+
+
+if __name__ == "__main__":
+    p = P2d(0, 0)
+    p1 = p + P2d(1, 1)
+    print(p1)
+    p2 = 2 * P2d(2, 5)
+    print(p2)
+    p3 = p2 - p1
+    print(p3)
