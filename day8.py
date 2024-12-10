@@ -5,7 +5,7 @@ from itertools import combinations
 from utils import P2d
 
 
-def sol(lines, part_2=False, debug=True):
+def sol(lines, part_2=False, debug=False):
     rows, cols = len(lines), len(lines[0])
     antennas = defaultdict(list)
     for y in range(rows):
