@@ -5,6 +5,7 @@ import sys
 def search(grid, i, j, part1=True):
     n, m = len(grid), len(grid[0])
     nines = set() if part1 else list()
+    update = lambda x, y: nines.add((x, y)) if isinstance(nines, set) else nines.append((x, y))
     queue = [(i, j)]
     while queue:
         i, j = queue.pop()
@@ -14,21 +15,14 @@ def search(grid, i, j, part1=True):
             if 0 <= ii < n and 0 <= jj < m and grid[ii][jj] - grid[i][j] == 1:
                 queue.append((ii, jj))
                 if grid[ii][jj] == 9:
-                    if part1:
-                        nines.add((ii, jj))
-                    else:
-                        nines.append((ii, jj))
+                    update(ii, jj)
 
     return len(nines)
 
 
-def solve(lines):
+def solve(grid):
     ans1 = ans2 = 0
-    grid = []
-    for line in lines:
-        grid.append([int(i) if i.isdigit() else -1 for i in line])
-
-    n, m = len(lines), len(lines[0])
+    n, m = len(grid), len(grid[0])
     for i in range(n):
         for j in range(m):
             if grid[i][j] == 0:
@@ -40,6 +34,6 @@ def solve(lines):
 
 if __name__ == "__main__":
     with open(sys.argv[1], 'r') as f:
-        ll = [i.strip() for i in f.readlines()]
+        ll = [[int(i) if i.isdigit() else -1 for i in line.strip()] for line in f]
 
     solve(ll)
