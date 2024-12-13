@@ -27,32 +27,21 @@ def explore(p, grid):
     return len(visited) * perimeter, visited
 
 
-def part_1(grid, n, m):
-    ans = 0
+def solve(grid, n, m):
+    part_1 = part_2 = 0
     visited = set()
     for i in range(n):
         for j in range(m):
             if P2d(i, j) not in visited:
-                score, new_visited = explore(P2d(i, j), grid)
-                visited |= new_visited
-                ans += score
-    return ans
-
-
-def count_sides(grid, n, m):
-    ans = 0
-    visited = set()
-    for i in range(n):
-        for j in range(m):
-            if P2d(i, j) not in visited:
-                _, cluster = explore(P2d(i, j), grid)
+                score, cluster = explore(P2d(i, j), grid)
                 res = 0
                 for _ in range(4):
                     res += count_left(cluster)
                     cluster = {P2d(p.y, -p.x) for p in cluster}  # rotate grid
-                ans += res * len(cluster)
+                part_2 += res * len(cluster)
                 visited |= cluster
-    return ans
+                part_1 += score
+    return part_1, part_2
 
 
 def count_left(cluster):
@@ -100,5 +89,4 @@ if __name__ == "__main__":
             for j in range(len(ll[0])):
                 g[P2d(i, j)] = ll[i][j]
 
-    print(part_1(g, len(ll), len(ll[0])))
-    print(count_sides(g, len(ll), len(ll[0])))
+    print(solve(g, len(ll), len(ll[0])))
