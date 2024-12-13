@@ -21,6 +21,9 @@ class P2d:
     def __sub__(self, other):
         return (-1 * other) + self
 
+    def __neg__(self):
+        return P2d(-self.x, -self.y)
+
 
 def measure_runtime(func):
     """
