@@ -2,11 +2,6 @@
 import sys
 from utils import P2d
 
-DOWN = P2d(1, 0)
-UP = P2d(-1, 0)
-RIGHT = P2d(0, 1)
-LEFT = P2d(0, -1)
-
 
 def explore(p, grid):
     perimeter = 0
@@ -69,16 +64,6 @@ def count_left(cluster):
                     is_right_occ = False
 
     return sides
-
-
-def print_grid(grid):
-    min_x, *_, max_x = sorted(p.x for p in grid)
-    min_y, *_, max_y = sorted(p.y for p in grid)
-
-    for i in range(min_x, max_x + 1):
-        for j in range(min_y, max_y + 1):
-            print(grid.get(P2d(i, j)), end="")
-        print()
 
 
 if __name__ == "__main__":
