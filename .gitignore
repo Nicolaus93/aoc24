@@ -1,1 +1,4 @@
 *.txt
+private_input.py
+.idea/
+__pycache__/
