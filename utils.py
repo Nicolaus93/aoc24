@@ -24,6 +24,9 @@ class P2d:
     def __neg__(self):
         return P2d(-self.x, -self.y)
 
+    def __lt__(self, other):
+        return self.x < other.x and self.y < other.y
+
 
 DOWN = P2d(1, 0)
 UP = P2d(-1, 0)
