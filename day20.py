@@ -89,14 +89,16 @@ def print_path(grid, path):
         print()
 
 
-def main():
+def solve(part_2):
     ll = open("d20.txt", 'r').read().splitlines()
     grid, start, end = get_grid(ll)
     dist, path, all_dist = dijkstra(grid, start, end)
 
     print("Finding cheats..")
-    # all_savings = get_min_shortcut(path, all_dist, grid)
-    all_savings = find_all_cheats(path, all_dist)
+    if part_2:
+        all_savings = find_all_cheats(path, all_dist)
+    else:
+        all_savings = get_min_shortcut(path, all_dist, grid)
     count = 0
     for saving, cheats_set in all_savings.items():
         if saving >= 100:
@@ -104,4 +106,6 @@ def main():
             count += len(cheats_set)
     print(count)
 
-main()
+
+solve(part_2=False)
+solve(part_2=True)

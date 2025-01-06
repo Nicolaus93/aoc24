@@ -1,5 +1,4 @@
 import re
-import sys
 import pathlib
 from collections import Counter
 from utils import progressbar
@@ -50,7 +49,7 @@ def print_robots(robots):
         print()
 
 
-ll = pathlib.Path(sys.argv[1]).read_text().splitlines()
+ll = pathlib.Path('d14.txt').read_text().splitlines()
 print(solve(ll, 100)[0])
 all_steps = [i for i in range(10000)]
 for i in progressbar(all_steps):

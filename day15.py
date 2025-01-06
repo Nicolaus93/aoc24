@@ -1,6 +1,5 @@
 
 import pathlib
-import sys
 
 from utils import P2d, RIGHT, LEFT, UP, DOWN, print_grid
 
@@ -105,7 +104,7 @@ def solve(grid, moves, part_2=False):
         else:
             rob_pos, _ = move(rob_pos, MOVES[m], grid)
 
-    print_grid(grid)
+    # print_grid(grid)
     ans = sum(100 * box_pos.x + box_pos.y for box_pos, value in grid.items() if value in 'O[')
     return ans
 
@@ -140,6 +139,6 @@ def transform(lines):
     return new_grid, moves
 
 
-ll = pathlib.Path(sys.argv[1]).read_text().splitlines()
+ll = pathlib.Path('d15.txt').read_text().splitlines()
 print(solve(*read_input(ll)))
 print(solve(*transform(ll), part_2=True))

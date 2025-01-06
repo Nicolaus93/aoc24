@@ -10,7 +10,7 @@ def expand_nums(block):
             expand += [pos // 2] * int(value)
         else:
             expand += ['.'] * int(value)
-    return expand, pos // 2
+    return expand
 
 
 def get_free_sizes(mem):
@@ -27,7 +27,7 @@ def get_free_sizes(mem):
 
 
 def part_1(lines):
-    expand, max_n = expand_nums(lines[0])
+    expand = expand_nums(lines[0])
     left = 0
     right = len(expand) - 1
     while left < right:
@@ -51,7 +51,7 @@ def get_block_size(n, mem, r_idx):
 
 
 def part_2(disk_map):
-    mem, max_n = expand_nums(disk_map)
+    mem = expand_nums(disk_map)
     free_sizes = get_free_sizes(mem)
     n = 9999
     r = len(mem) - 1
@@ -74,7 +74,6 @@ def part_2(disk_map):
     return sum(pos * int(value) for pos, value in enumerate(mem) if value != ".")
 
 
-if __name__ == "__main__":
-    ll = open("d9.txt", 'r').read().splitlines()
-    print("part 1:", part_1(ll))
-    print("part 2:", part_2(ll[0]))
+ll = open("d9.txt", 'r').read().splitlines()
+print("part 1:", part_1(ll))
+print("part 2:", part_2(ll[0]))

@@ -1,5 +1,4 @@
 
-import sys
 from collections import defaultdict
 from itertools import combinations
 from utils import P2d
@@ -39,9 +38,8 @@ def sol(lines, part_2=False, debug=False):
     return len(antinodes)
 
 
-if __name__ == '__main__':
-    with open(sys.argv[1], 'r') as f:
-        ll = [i.strip() for i in f.readlines()]
-    
-    print(sol(ll))
-    print(sol(ll, part_2=True))
+with open("d8.txt") as f:
+    ll = [i.strip() for i in f.readlines()]
+
+print(sol(ll))
+print(sol(ll, part_2=True))

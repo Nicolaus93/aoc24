@@ -1,5 +1,4 @@
 import re
-import sys
 import pathlib
 from utils import P2d
 
@@ -30,6 +29,6 @@ def solve(lines, part_2=False):
     return ans
 
 
-ll = pathlib.Path(sys.argv[1]).read_text().splitlines()
+ll = pathlib.Path('d13.txt').read_text().splitlines()
 print(solve(ll))
 print(solve(ll, part_2=True))

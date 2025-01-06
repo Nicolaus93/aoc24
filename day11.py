@@ -1,7 +1,6 @@
 
-import re
-import sys
 from functools import cache
+from private_input import DAY_11 as nums
 
 
 @cache
@@ -26,9 +25,5 @@ def solve(nums, times):
         return total
 
 
-if __name__ == "__main__":
-    with open(sys.argv[1], 'r') as f:
-        ll = list(map(int, re.findall(r"\d+", f.read())))
-
-    print("part1", solve(ll, 25))
-    print("part2", solve(ll, 75))
+print("part1", solve(nums, 25))
+print("part2", solve(nums, 75))

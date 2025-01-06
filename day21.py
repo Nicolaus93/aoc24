@@ -98,7 +98,7 @@ def get_instruction_score(sequence, level, paths):
 
 
 def solve(seq, r1_paths, r2_paths, levels):
-    print(seq)
+    # print(seq)
     r1_instructions = get_robot_instructions(seq, r1_paths)
     min_len = 1e12
     for r1_path in r1_instructions:

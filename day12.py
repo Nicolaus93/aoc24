@@ -1,6 +1,5 @@
 
-import sys
-from utils import P2d
+from utils import P2d, UP, RIGHT, LEFT, DOWN
 
 
 def explore(p, grid):
@@ -66,12 +65,11 @@ def count_left(cluster):
     return sides
 
 
-if __name__ == "__main__":
-    with open(sys.argv[1], 'r') as f:
-        ll = [i.strip() for i in f.readlines()]
-        g = dict()
-        for i in range(len(ll)):
-            for j in range(len(ll[0])):
-                g[P2d(i, j)] = ll[i][j]
+with open('d12.txt') as f:
+    ll = [i.strip() for i in f.readlines()]
+    g = dict()
+    for i in range(len(ll)):
+        for j in range(len(ll[0])):
+            g[P2d(i, j)] = ll[i][j]
 
-    print(solve(g, len(ll), len(ll[0])))
+print(solve(g, len(ll), len(ll[0])))

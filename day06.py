@@ -1,4 +1,3 @@
-import sys
 from utils import measure_runtime, progressbar
 
 
@@ -42,10 +41,9 @@ def solve(lines):
     print("part2:", ans_2)
 
 
-if __name__ == "__main__":
-    with open(sys.argv[1], "r") as f:
-        ll = []
-        for ln in f:
-            ll.append([c for c in ln.strip()])
+with open("d6.txt", "r") as f:
+    ll = []
+    for ln in f:
+        ll.append([c for c in ln.strip()])
 
-    solve(ll)
+solve(ll)
