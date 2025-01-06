@@ -49,10 +49,10 @@ def solve():
     c_k = cliques_3
     while c_k:
         c_k_plus_one = find_k_cliques(c_k, graph)
-        for c in c_k_plus_one:
-            print(','.join(c))
+        if len(c_k_plus_one) == 1:
+            for c in c_k_plus_one:
+                print(','.join(c))
         c_k = c_k_plus_one
 
 
-if __name__ == '__main__':
-    solve()
+solve()
